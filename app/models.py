@@ -80,11 +80,18 @@ class Comment(db.Model):
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
-    # @classmethod
-    # def get_comments(cls, id):
-    #     comments = Comment.query.filter_by(blog_id = id).all()
-    #     return comments
+    @classmethod
+    def get_comments(cls, id):
+        comments = Comment.query.filter_by(blog_id = id).all()
+        return comments
 
     def delete_comment(self):
         db.session.delete(self)
         db.session.commit()
+
+class Subscriber(db.Model):
+    __tablename__ = 'subscribers'
+
+    id = db.Column(db.Integer, primary_key = True)
+    email = db.Column(db.String(255))
+    username = db.Column(db.String(255), index = True)

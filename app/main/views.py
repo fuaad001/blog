@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for, abort
 from . import main
 from .forms import BlogForm, CommentForm, UpdateProfile
-from ..models import Comment, User, Blog
+from ..models import Comment, User, Blog, Subscriber
 from .. import db, photos
 from flask_login import login_required, current_user
 import markdown2
@@ -90,6 +90,10 @@ def new_blog(uname):
 
         db.session.add(blog)
         db.session.commit()
+
+        subscribers = Subscriber.query.all()
+        for subscriber in subscribers:
+            mail_message("New Blog Post", "email/new_blog", subscriber.email, subscriber = subscriber)
 
         return redirect(url_for('.profile',uname=user.username))
 
