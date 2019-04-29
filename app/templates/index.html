@@ -11,42 +11,46 @@
 {% block content %}
 <div class="main">
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h4> <strong> {{quote.quote}} </strong></h4>
-      <h5> ~ <em>{{quote.author}}</em></h5>
-      <a href={{quote.permalink}}><button type="button" class="btn btn-warning"> View on Site </button></a>
+  <div class="col-md-12">
+    <div class="card">
+    <div class="card-header">
+      Quote
     </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p id="quote">{{quote.quote}}</p>
+        <footer class="blockquote-footer"><cite title="Source Title">{{quote.author}}</cite></footer>
+      </blockquote>
+    </div><br>
+  </div><br>
   </div>
-`<div class="row">
-      <h3 class="text-center">Blogs</h3>
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
           {% if blogs %}
-          <div class="row ">
-          {% for row in blogs | batch(2) %}
-              {% for blog in row %}
-              <div class="col-md-5">
-                  <h3 class="source-name text-center">{{blog.title | upper}}</h3>
-                  <div class="white">
-                    <p>Posted by <strong>{{blog.user_id}}</strong></p>
-                    <p>Date: <strong>{{blog.posted}}</strong></p>
-                    <p>"{{blog.message}}"</p>
+              {% for blog in blogs %}
+              <div class="col-md-6">
+                <div class="card text-center">
+                    <div class="card-header">
+                    {{blog.title}}
+                    </div>
+                    <div class="card-body">
+                    <p class="card-text">{{blog.message}}</p>
                     {% if current_user.is_authenticated %}
                       <a class="comment" href="{{url_for('main.comments',blog_id = blog.id)}}"> <button type="button" name="button" class="btn btn-warning">comment</button> </a>
-                  {% endif %}
-                  </div>
-              </div>
-              {% endfor %}
-          </div>
+                    {% endif %}
+                    </div>
+                    <div class="card-footer text-muted">Posted on:
+                    {{blog.posted}}
+                    </div>
+                </div><br>
+              </div>  <br>
+
+
+
+
           {% endfor %}
           {% else %}
           <h2>There are no Blogs</h2>
           {% endif %}
-        </div>
-        <div class="col-md-2"></div>
 
-  </div>`
 </div>
 </div>
 {% endblock %}

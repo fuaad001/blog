@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
+<div class="container" id="fun">
   <div class="row">
     <!-- displaying  Username-->
     <div class="col-md-4 marg2">
@@ -34,17 +34,14 @@
       <a href="{{url_for('main.new_blog',uname=user.username)}}"> <button type="button" name="button" class="btn btn-warning"> Add a New Blog</button></a>
     </div>
   </div>
-  <div class="row">
         <h3 class="text-center">Blogs</h3>
-          <div class="col-md-2"></div>
-          <div class="col-md-8">
+
             {% if blogs %}
             <div class="row ">
             {% for row in blogs | batch(2) %}
                 {% for blog in row %}
-                <div class="col-md-5">
-                    <img src={{blog.bblog_pic_path}} alt="" class="img-thumbnail">
-                    <h3 class="source-name text-center">{{blog.title | upper}}</h3>
+                <div class="col-md-3 card-group">
+                    <h3 class="source-name">{{blog.title | upper}}</h3>
                     <div class="white">
                       <p>Posted by <strong>{{blog.user_id}}</strong></p>
                       <p>Date: <strong>{{blog.posted}}</strong></p>
@@ -53,14 +50,14 @@
                     </div>
                 </div>
                 {% endfor %}
-            </div>
+
             {% endfor %}
             {% else %}
             <h2>You have no Blogs</h2>
             {% endif %}
           </div>
-          <div class="col-md-2"></div>
 
-    </div>
+
+
 </div>
 {% endblock %}
