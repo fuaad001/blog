@@ -11,7 +11,7 @@
       <tr>
         <td>{{comment.title}}</td>
         <td>{{comment.comment}}</td>
-        <td>{{comment.user_id}}</td>
+        <td>{{comment.user.username}}</td>
         <td><a href="{{url_for('main.del_comment',blog_id = comment.blog_id, comment_id = comment.id)}}"><button type="button" name="button" class="btn btn-warning">Delete Comment</button></a></td>
       </tr>
     </table>
