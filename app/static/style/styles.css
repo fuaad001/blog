@@ -4,6 +4,10 @@ table, th, td {
   padding: 1.5%;
 }
 
+table{
+  margin-bottom: 1%;
+}
+
 body{
   background-image: url('https://images.pexels.com/photos/1919287/pexels-photo-1919287.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
   background-repeat: no-repeat;
@@ -92,7 +96,15 @@ h1, h2, h3{;
   padding-bottom: 1%;
 }
 
+#reviews{
+  margin-top: 5%;
+}
+
 @media only screen and (min-width: 812px) {
+
+  #reviews{
+    margin-top: 0;
+  }
 
   .marg{
       margin-top: 5%;

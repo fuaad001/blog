@@ -114,7 +114,7 @@ def del_comment(blog_id, comment_id):
     blog = Blog.query.filter_by(id = blog_id).first()
     comments = Comment.query.filter_by(blog_id = blog.id).order_by(Comment.posted.desc())
     comment = Comment.query.filter_by(id = comment_id).first()
-    if blog.user_id == current_user.id:
+    if blog.user_id == current_user.id or comment.user_id == current_user.id:
 
         Comment.delete_comment(comment)
 
