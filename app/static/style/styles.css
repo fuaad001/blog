@@ -54,6 +54,30 @@ h1, h2, h3{;
   padding: 2%;
 }
 
+.big{
+  font-size: large;
+}
+
+.big label{
+  color: black;
+}
+
+.big a{
+  color: white;
+}
+
+.big input{
+  font-size: large;
+}
+
+.big .btn{
+  background-color: black;
+  color: white;
+  font-size: 80%;
+  margin-bottom: 1%;
+  font-weight: bold;
+}
+
 #fun{
   background-color: rgba(255,255,255,0.6);
   padding: 2.5%;
