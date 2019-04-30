@@ -38,12 +38,11 @@
 
             {% if blogs %}
             <div class="row ">
-            {% for row in blogs | batch(2) %}
-                {% for blog in row %}
+                {% for blog in blogs %}
                 <div class="col-md-3 card-group">
                     <h3 class="source-name">{{blog.title | upper}}</h3>
                     <div class="white">
-                      <p>Posted by <strong>{{blog.user_id}}</strong></p>
+                      <p>Posted by <strong> {{blog.user.username}}</strong></p>
                       <p>Date: <strong>{{blog.posted}}</strong></p>
                       <p>"{{blog.message}}"</p>
                       <a href="{{url_for('main.del_blog',uname=user.username, blog_id = blog.id)}}"><button type="button" name="button" class="btn btn-warning">Delete Blog Article</button></a>
@@ -51,7 +50,6 @@
                 </div>
                 {% endfor %}
 
-            {% endfor %}
             {% else %}
             <h2>You have no Blogs</h2>
             {% endif %}
